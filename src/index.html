@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  </head>
+  <body>
+      <div id='list-container' class='container w-25 shadow my-5'>
+        <ul class="list-group join-list-bottom no-round-borders">
+          <li class="list-group-item font-bold">Today's To Do</li>
+          <li class='list-group-item d-flex'><input id='add-list'  action='submit' placeholder='Add to your list...'><button id='add-btn' type='submit' action='submit' class='btn btn-secondary'>Add</button></li>
+        </ul>
+        <ul id='list-objects' class="list-group join-list-top join-list-bottom">
+          <!-- Add list elements Here -->
+        </ul>
+        <ul class='list-group join-list-top no-round-borders'>
+          <li class="list-group-item text-center bg-secondary opacity-25"><p class='no-margin font-bold black'>Clear all completed</p></li>
+        </ul>
+      </div>
+  </body>
+</html>
