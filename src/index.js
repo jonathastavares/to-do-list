@@ -59,4 +59,7 @@ btn.addEventListener('click', (event) => {
   Update.listPopulate();
 });
 
+List.saveItem('Go to the gym');
+List.saveItem('Go to the bank');
+List.saveItem('Fix car sound');
 Update.listPopulate();
