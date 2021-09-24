@@ -2,6 +2,10 @@
   font-weight: bold;
 }
 
+.title {
+  font-size: 30px;
+}
+
 #add-list {
   border: 0;
   width: 100%;
@@ -39,6 +43,15 @@
   border-top: 0 !important;
 }
 
+.no-border {
+  border: 0 !important;
+}
+
 .no-round-borders {
   border-radius: 0 !important;
+}
+
+.list-font {
+  font-size: 16px;
+  font-weight: 500;
 }

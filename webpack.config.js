@@ -3,9 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    item: './src/item.js',
-    list: './src/list.js',
-    update: './src/update.js',
     index: './src/index.js',
   },
   devServer: {
