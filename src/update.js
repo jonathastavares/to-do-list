@@ -8,13 +8,9 @@ export class Update {
     listObj.innerHTML = '';
     List.dataArray().forEach((listElement, index) => {
       if (listElement.completed === false) {
-        listObj.innerHTML += `<li class='list-group-item d-flex align-items-center justify-content-between'><div class='d-flex'><input id='check' value='${index}' type="checkbox" class='me-4 align-self-center'><p class='no-margin align-self-center'>${listElement.text}</p></div><div><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-three-dots-vertical' viewBox='0 0 16 16'>
-          <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
-          </svg></div></li>`;
+        listObj.innerHTML += `<li id='task' class='list-group-item d-flex align-items-center justify-content-between'><div class='d-flex w-100'><input id='check' value='${index + 1}' type="checkbox" class='me-4 align-self-center'><p value='${index + 1}' id='item-description' class='w-100 list-font no-margin align-self-center'>${listElement.text}</p></div><div><button value='${index + 1}' id='delete-btn' type='submit' class='btn btn-danger' >Delete</button></div></li>`;
       } else {
-        listObj.innerHTML += `<li class='list-group-item d-flex align-items-center justify-content-between'><div class='d-flex'><input id='check' value='${index}' type="checkbox" class='me-4 align-self-center' checked><p class='no-margin align-self-center'>${listElement.text}</p></div><div><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-three-dots-vertical' viewBox='0 0 16 16'>
-          <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
-          </svg></div></li>`;
+        listObj.innerHTML += `<li id='task' class='list-group-item d-flex align-items-center justify-content-between'><div class='d-flex w-100'><input id='check' value='${index + 1}' type="checkbox" class='me-4 align-self-center' checked><p value='${index + 1}' id='item-description' class='text-decoration-line-through w-100 list-font no-margin align-self-center'>${listElement.text}</p></div><div><button value='${index + 1}' id='delete-btn' type='submit' class='btn btn-danger'>Delete</button></div></li>`;
       }
     });
     if (listObj.innerHTML === '') {
@@ -22,5 +18,18 @@ export class Update {
     } else {
       listObj.classList.remove('d-none');
     }
+    Update.indexUpdate();
+  }
+
+  static indexUpdate() {
+    const list = List.dataArray();
+    list.forEach((element, index) => {
+      element.index = index + 1;
+    });
+    localStorage.setItem('listArray', JSON.stringify(list));
+  }
+
+  static reload() {
+    window.location.reload();
   }
 }
