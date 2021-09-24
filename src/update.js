@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export, import/no-cycle */
 
 import { List } from './list.js';
 

@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export, no-unused-vars */
 
 import './style.css';
 import { List } from './list.js';
@@ -38,12 +38,10 @@ checkboxes.forEach((checkbox) => {
 
 editables.forEach((button) => {
   button.addEventListener('click', (event) => {
-    console.log('Button triggered!');
     List.makeEditable(event.target.attributes[0].value);
   });
 });
 
 removeall.addEventListener('click', (event) => {
-  console.log('Listener triggered!')
   List.removeCompleted();
 });
