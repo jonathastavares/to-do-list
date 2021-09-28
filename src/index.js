@@ -32,7 +32,6 @@ deletebtns.forEach((deletebtn) => {
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', (event) => {
     List.completeItem(event);
-    Update.reload();
   });
 });
 

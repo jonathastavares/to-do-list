@@ -90,6 +90,7 @@ export class List {
   }
 
   static completeItem(event) {
+    console.log(event);
     const listArray = List.dataArray();
     if (listArray[event.target.value - 1].completed === false) {
       listArray[event.target.value - 1].completed = true;
