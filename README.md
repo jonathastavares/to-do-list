@@ -26,7 +26,7 @@
 
 ## Live Version
 
-- Check out the [Live Version.](https://raw.githack.com/jonathastavares/to-do-list/new-files/dist/index.html)
+- Check out the [Live Version.](https://jonathastavares.github.io/to-do-list/dist/index.html)
 
 # Author
 
