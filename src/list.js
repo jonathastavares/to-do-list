@@ -77,12 +77,6 @@ export class List {
     });
   }
 
-  static getDeleteButton(id) {
-    const deletebtns = document.querySelectorAll('button[type=submit][id=delete-btn');
-    const deletebtn = deletebtns[id];
-    return deletebtn;
-  }
-
   static getTextItem(id) {
     const textItems = document.querySelectorAll('p[id=item-description');
     const textItem = textItems[id];
@@ -93,10 +87,9 @@ export class List {
     const listArray = List.dataArray();
     if (listArray[event.target.value - 1].completed === false) {
       listArray[event.target.value - 1].completed = true;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     } else {
       listArray[event.target.value - 1].completed = false;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     }
+    localStorage.setItem('listArray', JSON.stringify(listArray));
   }
 }
