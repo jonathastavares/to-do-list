@@ -8,6 +8,9 @@
     "start": "webpack serve --open",
     "build": "webpack"
   },
+  "jest": {
+    "verbose": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jonathastavares/to-do-list.git"
@@ -38,6 +41,9 @@
     "webpack-dev-server": "^4.2.1"
   },
   "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-jest": "^27.2.4",
     "bootstrap-icons": "^1.5.0",
     "lodash": "^4.17.21"
   }
