@@ -480,12 +480,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "List": () => (/* binding */ List)
 /* harmony export */ });
-/* harmony import */ var _item_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
-/* harmony import */ var _update_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
-/* eslint-disable import/prefer-default-export */
-
-
-
+/* eslint-disable import/prefer-default-export, import/no-cycle, no-unused-vars */
+const { Item } = __webpack_require__(12);
+const { Update } = __webpack_require__(13);
 
 class List {
   static dataArray() {
@@ -499,19 +496,19 @@ class List {
   }
 
   static saveItem(obj) {
-    const item = new _item_js__WEBPACK_IMPORTED_MODULE_0__.Item(obj);
+    const item = new Item(obj);
     const listArray = List.dataArray();
     item.index = listArray.length + 1;
     listArray.push(item);
     localStorage.setItem('listArray', JSON.stringify(listArray));
-    _update_js__WEBPACK_IMPORTED_MODULE_1__.Update.listPopulate();
+    Update.listPopulate();
   }
 
   static removeItem(event) {
     const removeArr = List.dataArray();
     removeArr.splice(event, 1);
     localStorage.setItem('listArray', JSON.stringify(removeArr));
-    _update_js__WEBPACK_IMPORTED_MODULE_1__.Update.listPopulate();
+    Update.listPopulate();
   }
 
   static updateItem(text, id) {
@@ -522,20 +519,19 @@ class List {
         localStorage.setItem('listArray', JSON.stringify(newArr));
       }
     });
-    _update_js__WEBPACK_IMPORTED_MODULE_1__.Update.reload();
+    Update.reload();
   }
 
-  // needs to fix
   static removeCompleted() {
     const events = List.dataArray();
-    const newEvents = new Array();
-    events.forEach((event, index) => {
+    const newEvents = [];
+    events.forEach((event) => {
       if (!event.completed) {
         newEvents.push(event);
       }
     });
     localStorage.setItem('listArray', JSON.stringify(newEvents));
-    _update_js__WEBPACK_IMPORTED_MODULE_1__.Update.reload();
+    Update.reload();
   }
 
   static makeEditable(id) {
@@ -562,12 +558,6 @@ class List {
     });
   }
 
-  static getDeleteButton(id) {
-    const deletebtns = document.querySelectorAll('button[type=submit][id=delete-btn');
-    const deletebtn = deletebtns[id];
-    return deletebtn;
-  }
-
   static getTextItem(id) {
     const textItems = document.querySelectorAll('p[id=item-description');
     const textItem = textItems[id];
@@ -576,14 +566,12 @@ class List {
 
   static completeItem(event) {
     const listArray = List.dataArray();
-    const p = List.getTextItem(event.target.value - 1);
     if (listArray[event.target.value - 1].completed === false) {
       listArray[event.target.value - 1].completed = true;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     } else {
       listArray[event.target.value - 1].completed = false;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     }
+    localStorage.setItem('listArray', JSON.stringify(listArray));
   }
 }
 
@@ -615,16 +603,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Update": () => (/* binding */ Update)
 /* harmony export */ });
-/* harmony import */ var _list_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export, import/no-cycle */
 
-
+const { List } = __webpack_require__(11);
 
 class Update {
   static listPopulate() {
     const listObj = document.getElementById('list-objects');
     listObj.innerHTML = '';
-    _list_js__WEBPACK_IMPORTED_MODULE_0__.List.dataArray().forEach((listElement, index) => {
+    List.dataArray().forEach((listElement, index) => {
       if (listElement.completed === false) {
         listObj.innerHTML += `<li id='task' class='list-group-item d-flex align-items-center justify-content-between'><div class='d-flex w-100'><input id='check' value='${index + 1}' type="checkbox" class='me-4 align-self-center'><p value='${index + 1}' id='item-description' class='w-100 list-font no-margin align-self-center'>${listElement.text}</p></div><div><button value='${index + 1}' id='delete-btn' type='submit' class='btn btn-danger' >Delete</button></div></li>`;
       } else {
@@ -640,7 +627,7 @@ class Update {
   }
 
   static indexUpdate() {
-    const list = _list_js__WEBPACK_IMPORTED_MODULE_0__.List.dataArray();
+    const list = List.dataArray();
     list.forEach((element, index) => {
       element.index = index + 1;
     });

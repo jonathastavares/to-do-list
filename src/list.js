@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle, no-unused-vars */
+const Item  = require('./item');
+const Update = require('./update');
 
-import { Item } from './item.js';
-import { Update } from './update.js';
-
-export class List {
+class List {
   static dataArray() {
     const listArray = JSON.parse(localStorage.getItem('listArray') || '[]');
     return listArray;
@@ -77,12 +76,6 @@ export class List {
     });
   }
 
-  static getDeleteButton(id) {
-    const deletebtns = document.querySelectorAll('button[type=submit][id=delete-btn');
-    const deletebtn = deletebtns[id];
-    return deletebtn;
-  }
-
   static getTextItem(id) {
     const textItems = document.querySelectorAll('p[id=item-description');
     const textItem = textItems[id];
@@ -93,10 +86,11 @@ export class List {
     const listArray = List.dataArray();
     if (listArray[event.target.value - 1].completed === false) {
       listArray[event.target.value - 1].completed = true;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     } else {
       listArray[event.target.value - 1].completed = false;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     }
+    localStorage.setItem('listArray', JSON.stringify(listArray));
   }
 }
+
+module.exports = List;

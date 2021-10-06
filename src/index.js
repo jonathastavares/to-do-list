@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export, no-unused-vars */
 
 import './style.css';
-import { List } from './list.js';
-import { Update } from './update.js';
+const List = require('./list');
+const Update = require('./update');
 
 Update.listPopulate();
 
