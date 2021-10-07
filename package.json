@@ -4,12 +4,19 @@
   "description": "This is my To-do-list project for my Javascript module at Microverse.",
   "private": true,
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --env=jsdom --coverage",
     "start": "webpack serve --open",
     "build": "webpack"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "globals": {
+        "window": {}
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -23,6 +30,7 @@
   },
   "homepage": "https://github.com/jonathastavares/to-do-list#readme",
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.14.5",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
@@ -38,7 +46,7 @@
     "stylelint-scss": "^3.21.0",
     "webpack": "^5.53.0",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.1"
+    "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
     "@babel/core": "^7.15.8",
