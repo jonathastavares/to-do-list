@@ -23,17 +23,32 @@ describe('My To-Do List\'s editing functionality', () => {
 
 describe('My To-Do List\'s completed functionality', () => {
   test('Should mark the new task into the to-do list as completed', () => {
-    const newTodoInput = document.getElementById('add-list');
-    newTodoInput.value = 'New todolist!';
-    List.saveItem('Task 1');
-    List.saveItem('Task 2');
-    List.saveItem('Task 3');
-    List.completeItem(1);
-    listArray = List.completeItem(2);
+    listArray = List.completeItem(1);
     expect(listArray[0]).toMatchObject({ text: 'Task 1', completed: true, index: 1 });
   });
+
   test('Should mark the new task into the to-do list as uncompleted', () => {
-    listArray = List.completeItem(2);
-    expect(listArray[1]).toMatchObject({ text: 'Task 2', completed: false, index: 2 });
+    listArray = List.completeItem(1);
+    expect(listArray[0]).toMatchObject({ text: 'Task 1', completed: false, index: 1 });
   });
+});
+
+describe('My To-Do List\'s Clear all completed functionality', () => {
+    test('Should clear first and last tasks into the to-do list', () => {
+        List.completeItem(1);
+        List.completeItem(listArray.length);
+        const len = listArray.length;
+        listArray = List.removeCompleted()
+        expect(listArray.length).toBe(len - 2);
+        expect(listArray[0]).toMatchObject({text: 'Task 2', completed: false, index: 1});
+        expect(listArray[1]).toMatchObject({text: 'Task 3', completed: false, index: 2});
+      });
+
+    test('Should clear all the tasks into the to-do list', () => {
+      listArray.forEach((task) => {
+        List.completeItem(task.index);
+      })
+      listArray = List.removeCompleted()
+      expect(listArray.length).toBe(0);
+    });
 });

@@ -47,4 +47,5 @@ editables.forEach((button) => {
 
 removeall.addEventListener('click', (event) => {
   List.removeCompleted();
+  Update.reload();
 });

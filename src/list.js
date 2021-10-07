@@ -51,7 +51,8 @@ export class List {
       }
     });
     localStorage.setItem('listArray', JSON.stringify(newEvents));
-    Update.reload();
+    Update.indexUpdate();
+    return List.dataArray();
   }
 
   static makeEditable(id) {
