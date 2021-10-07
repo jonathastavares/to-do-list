@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle */
 
-const List = require('./list');
+const List = require('./list.js');
 
 class Update {
   static listPopulate() {
