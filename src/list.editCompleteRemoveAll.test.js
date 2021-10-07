@@ -28,7 +28,12 @@ describe('My To-Do List\'s completed functionality', () => {
     List.saveItem('Task 1');
     List.saveItem('Task 2');
     List.saveItem('Task 3');
-    listArray = List.completeItem(1);
+    List.completeItem(1);
+    listArray = List.completeItem(2);
     expect(listArray[0]).toMatchObject({ text: 'Task 1', completed: true, index: 1 });
+  });
+  test('Should mark the new task into the to-do list as uncompleted', () => {
+    listArray = List.completeItem(2);
+    expect(listArray[1]).toMatchObject({ text: 'Task 2', completed: false, index: 2 });
   });
 });
