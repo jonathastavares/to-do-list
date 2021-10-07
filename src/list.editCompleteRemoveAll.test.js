@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { List } from './list.js';
 
 jest.mock('./__mocks__/localStorage.js');
@@ -34,21 +35,31 @@ describe('My To-Do List\'s completed functionality', () => {
 });
 
 describe('My To-Do List\'s Clear all completed functionality', () => {
-    test('Should clear first and last tasks into the to-do list', () => {
-        List.completeItem(1);
-        List.completeItem(listArray.length);
-        const len = listArray.length;
-        listArray = List.removeCompleted()
-        expect(listArray.length).toBe(len - 2);
-        expect(listArray[0]).toMatchObject({text: 'Task 2', completed: false, index: 1});
-        expect(listArray[1]).toMatchObject({text: 'Task 3', completed: false, index: 2});
-      });
-
-    test('Should clear all the tasks into the to-do list', () => {
-      listArray.forEach((task) => {
-        List.completeItem(task.index);
-      })
-      listArray = List.removeCompleted()
-      expect(listArray.length).toBe(0);
+  test('Should not clear all any task into the to-do list', () => {
+    listArray.forEach((task) => {
+      List.completeItem(task.index); // Check as completed: true;
+      List.completeItem(task.index); // Check as completed: false;
     });
+    const len = listArray.length; // Assign the current array length to a variable to store it
+    listArray = List.removeCompleted(); // Clear all completed tasks in the array, but in this case, none of them are completed
+    expect(listArray.length).toBe(len); // Expects the listArray.length to be equals to len, which is the last value of listArray.length before clearing all completed tasks.
+  });
+
+  test('Should clear first and last tasks into the to-do list', () => {
+    List.completeItem(1); // Check as completed: true the first element of the array;
+    List.completeItem(listArray.length); // Check as completed: true the last element of the array;
+    const len = listArray.length; // Assign the current array length to a variable to store it
+    listArray = List.removeCompleted(); // Clear all completed tasks in the array, but in this case, none of them are completed
+    expect(listArray.length).toBe(len - 2); // Expects the listArray.length to be equals to len - 2, since we removed 2 elements of the array.
+    expect(listArray[0]).toMatchObject({ text: 'Task 2', completed: false, index: 1 }); // Checks if now, the first element of the Array is exactly like the second before clearing all completed tasks.
+    expect(listArray[1]).toMatchObject({ text: 'Task 3', completed: false, index: 2 }); // Checks if now, the second element of the Array is exactly like the third before clearing all completed tasks.
+  });
+
+  test('Should clear all the tasks into the to-do list', () => {
+    listArray.forEach((task) => { // Loops trought the listArray;
+      List.completeItem(task.index); // Checks every task as completed: true;
+    });
+    listArray = List.removeCompleted(); // Clear all completed tasks in the array, but in this case, none of them are completed
+    expect(listArray.length).toBe(0); // Expects the listArray.length to be 0 since we cleared all the tasks
+  });
 });
