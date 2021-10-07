@@ -8,22 +8,28 @@ describe('My To-Do List\'s adding functionality', () => {
     const newTodoInput = document.getElementById('add-list');
     newTodoInput.value = 'New todolist!';
     listArray = List.saveItem(newTodoInput.value);
-    expect(listArray).toHaveLength(1);
+    listArray = List.saveItem(newTodoInput.value);
+    expect(listArray).toHaveLength(2);
   });
 
   test('Should not add anything into to-do list', () => {
     const newTodoInput = document.getElementById('add-list');
     newTodoInput.value = '                  ';
     listArray = List.saveItem(newTodoInput.value);
-    expect(listArray).toHaveLength(1);
+    expect(listArray).toHaveLength(2);
   });
 });
 
 describe('My To-Do List\'s removing functionality', () => {
-    test('Should remove the last task into the list of to-do list', () => {
-      let task = listArray[listArray.length - 1];
-      listArray = List.removeItem(task.index - 1);
-      expect(listArray).toHaveLength(0);
-    });
-  
+  test('Should not remove the last task into the list of to-do list', () => {
+    const event = listArray[listArray.length - 1];
+    listArray = List.removeItem(event.index);
+    expect(listArray).toHaveLength(2);
+  });
+
+  test('Should remove the last task into the list of to-do list', () => {
+    const event = listArray[listArray.length - 1];
+    listArray = List.removeItem(event.index - 1);
+    expect(listArray).toHaveLength(1);
+  });
 });
