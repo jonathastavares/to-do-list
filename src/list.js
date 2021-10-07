@@ -85,13 +85,14 @@ export class List {
     return textItem;
   }
 
-  static completeItem(event) {
+  static completeItem(eventId) {
     const listArray = List.dataArray();
-    if (listArray[event.target.value - 1].completed === false) {
-      listArray[event.target.value - 1].completed = true;
+    if (listArray[eventId - 1].completed === false) {
+      listArray[eventId - 1].completed = true;
     } else {
-      listArray[event.target.value - 1].completed = false;
+      listArray[eventId - 1].completed = false;
     }
     localStorage.setItem('listArray', JSON.stringify(listArray));
+    return listArray;
   }
 }
