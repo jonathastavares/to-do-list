@@ -27,6 +27,7 @@ addbtn.addEventListener('click', (event) => {
 deletebtns.forEach((deletebtn) => {
   deletebtn.addEventListener('click', (event) => {
     List.removeItem(event.target.value - 1);
+    Update.listPopulate();
     Update.reload();
   });
 });

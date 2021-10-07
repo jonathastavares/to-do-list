@@ -28,7 +28,7 @@ export class List {
     const removeArr = List.dataArray();
     removeArr.splice(event, 1);
     localStorage.setItem('listArray', JSON.stringify(removeArr));
-    Update.listPopulate();
+    return removeArr;
   }
 
   static updateItem(text, id) {

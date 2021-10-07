@@ -18,3 +18,12 @@ describe('My To-Do List\'s adding functionality', () => {
     expect(listArray).toHaveLength(1);
   });
 });
+
+describe('My To-Do List\'s removing functionality', () => {
+    test('Should remove the last task into the list of to-do list', () => {
+      let task = listArray[listArray.length - 1];
+      listArray = List.removeItem(task.index - 1);
+      expect(listArray).toHaveLength(0);
+    });
+  
+});

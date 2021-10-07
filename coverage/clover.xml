@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1633619678036" clover="3.2.0">
-  <project timestamp="1633619678036" name="All files">
-    <metrics statements="68" coveredstatements="12" conditionals="22" coveredconditionals="4" methods="19" coveredmethods="3" elements="109" coveredelements="19" complexity="0" loc="68" ncloc="68" packages="1" files="3" classes="3"/>
+<coverage generated="1633621343818" clover="3.2.0">
+  <project timestamp="1633621343818" name="All files">
+    <metrics statements="68" coveredstatements="16" conditionals="22" coveredconditionals="4" methods="19" coveredmethods="4" elements="109" coveredelements="24" complexity="0" loc="68" ncloc="68" packages="1" files="3" classes="3"/>
     <file name="item.js" path="E:\Microverse\Javascript\to-do-list\src\item.js">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="5" count="1" type="stmt"/>
@@ -9,9 +9,9 @@
       <line num="7" count="1" type="stmt"/>
     </file>
     <file name="list.js" path="E:\Microverse\Javascript\to-do-list\src\list.js">
-      <metrics statements="50" coveredstatements="9" conditionals="18" coveredconditionals="4" methods="13" coveredmethods="2"/>
-      <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="8" count="2" type="stmt"/>
+      <metrics statements="50" coveredstatements="13" conditionals="18" coveredconditionals="4" methods="13" coveredmethods="3"/>
+      <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="3" type="stmt"/>
       <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="13" count="0" type="stmt"/>
       <line num="17" count="2" type="stmt"/>
@@ -21,10 +21,10 @@
       <line num="21" count="1" type="stmt"/>
       <line num="22" count="1" type="stmt"/>
       <line num="24" count="2" type="stmt"/>
-      <line num="28" count="0" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
       <line num="35" count="0" type="stmt"/>
       <line num="36" count="0" type="stmt"/>
       <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
