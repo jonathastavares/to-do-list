@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle, no-unused-vars */
-const Item  = require('./item');
+const Item = require('./item');
 const Update = require('./update');
 
 class List {
@@ -14,12 +14,14 @@ class List {
   }
 
   static saveItem(obj) {
-    const item = new Item(obj);
     const listArray = List.dataArray();
-    item.index = listArray.length + 1;
-    listArray.push(item);
-    localStorage.setItem('listArray', JSON.stringify(listArray));
-    Update.listPopulate();
+    if (obj.trim()) {
+      const item = new Item(obj);
+      item.index = listArray.length + 1;
+      listArray.push(item);
+      localStorage.setItem('listArray', JSON.stringify(listArray));
+    }
+    return listArray;
   }
 
   static removeItem(event) {
