@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle */
 
-const List = require('./list.js');
+import { List } from './list.js';
 
-class Update {
+export class Update {
   static listPopulate() {
     const listObj = document.getElementById('list-objects');
     listObj.innerHTML = '';
@@ -33,5 +33,3 @@ class Update {
     window.location.reload();
   }
 }
-
-module.exports = Update;

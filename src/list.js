@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle, no-unused-vars */
-const Item = require('./item');
-const Update = require('./update');
+import { Item } from './item';
+import { Update } from './update';
 
-class List {
+export class List {
   static dataArray() {
     const listArray = JSON.parse(localStorage.getItem('listArray') || '[]');
     return listArray;
@@ -94,5 +94,3 @@ class List {
     localStorage.setItem('listArray', JSON.stringify(listArray));
   }
 }
-
-module.exports = List;

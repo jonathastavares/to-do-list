@@ -2,8 +2,8 @@
 
 import './style.css';
 
-const List = require('./list.js');
-const Update = require('./update.js');
+import { List } from './list.js';
+import { Update } from './update.js';
 
 Update.listPopulate();
 
