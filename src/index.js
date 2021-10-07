@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export, no-unused-vars */
 
 import './style.css';
+
 import { List } from './list.js';
 import { Update } from './update.js';
 
@@ -19,12 +20,14 @@ addbtn.addEventListener('click', (event) => {
 
   List.saveItem(desc);
   document.getElementById('add-list').value = '';
+  Update.listPopulate();
   Update.reload();
 });
 
 deletebtns.forEach((deletebtn) => {
   deletebtn.addEventListener('click', (event) => {
     List.removeItem(event.target.value - 1);
+    Update.listPopulate();
     Update.reload();
   });
 });

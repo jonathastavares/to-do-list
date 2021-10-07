@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle, no-unused-vars */
-
-import { Item } from './item.js';
-import { Update } from './update.js';
+import { Item } from './item';
+import { Update } from './update';
 
 export class List {
   static dataArray() {
@@ -15,19 +14,21 @@ export class List {
   }
 
   static saveItem(obj) {
-    const item = new Item(obj);
     const listArray = List.dataArray();
-    item.index = listArray.length + 1;
-    listArray.push(item);
-    localStorage.setItem('listArray', JSON.stringify(listArray));
-    Update.listPopulate();
+    if (obj.trim()) {
+      const item = new Item(obj);
+      item.index = listArray.length + 1;
+      listArray.push(item);
+      localStorage.setItem('listArray', JSON.stringify(listArray));
+    }
+    return listArray;
   }
 
   static removeItem(event) {
     const removeArr = List.dataArray();
     removeArr.splice(event, 1);
     localStorage.setItem('listArray', JSON.stringify(removeArr));
-    Update.listPopulate();
+    return removeArr;
   }
 
   static updateItem(text, id) {
@@ -77,12 +78,6 @@ export class List {
     });
   }
 
-  static getDeleteButton(id) {
-    const deletebtns = document.querySelectorAll('button[type=submit][id=delete-btn');
-    const deletebtn = deletebtns[id];
-    return deletebtn;
-  }
-
   static getTextItem(id) {
     const textItems = document.querySelectorAll('p[id=item-description');
     const textItem = textItems[id];
@@ -93,10 +88,9 @@ export class List {
     const listArray = List.dataArray();
     if (listArray[event.target.value - 1].completed === false) {
       listArray[event.target.value - 1].completed = true;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     } else {
       listArray[event.target.value - 1].completed = false;
-      localStorage.setItem('listArray', JSON.stringify(listArray));
     }
+    localStorage.setItem('listArray', JSON.stringify(listArray));
   }
 }
