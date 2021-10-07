@@ -39,7 +39,7 @@ export class List {
         localStorage.setItem('listArray', JSON.stringify(newArr));
       }
     });
-    Update.reload();
+    return newArr;
   }
 
   static removeCompleted() {
@@ -75,6 +75,7 @@ export class List {
     editbtn.addEventListener('click', (event) => {
       const item = document.getElementById('edit-element');
       List.updateItem(item.value, id);
+      Update.reload();
     });
   }
 

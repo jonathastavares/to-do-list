@@ -1,3 +1,4 @@
+import exports from 'webpack';
 import { List } from './list.js';
 
 jest.mock('./__mocks__/localStorage.js');
