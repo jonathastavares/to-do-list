@@ -1,8 +1,9 @@
 /* eslint-disable import/prefer-default-export, no-unused-vars */
 
 import './style.css';
-const List = require('./list');
-const Update = require('./update');
+
+const List = require('./list.js');
+const Update = require('./update.js');
 
 Update.listPopulate();
 
@@ -19,6 +20,7 @@ addbtn.addEventListener('click', (event) => {
 
   List.saveItem(desc);
   document.getElementById('add-list').value = '';
+  Update.listPopulate();
   Update.reload();
 });
 
