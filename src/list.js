@@ -34,7 +34,7 @@ export class List {
   static updateItem(text, id) {
     const newArr = List.dataArray();
     List.dataArray().forEach((task, index) => {
-      if (index === id - 1) {
+      if (index === id - 1 && text != '') {
         newArr[index].text = text;
         localStorage.setItem('listArray', JSON.stringify(newArr));
       }
