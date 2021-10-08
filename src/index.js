@@ -34,7 +34,7 @@ deletebtns.forEach((deletebtn) => {
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', (event) => {
-    List.completeItem(event);
+    List.completeItem(event.target.value);
     Update.reload();
   });
 });
@@ -47,4 +47,5 @@ editables.forEach((button) => {
 
 removeall.addEventListener('click', (event) => {
   List.removeCompleted();
+  Update.reload();
 });

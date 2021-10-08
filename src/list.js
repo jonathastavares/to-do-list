@@ -34,12 +34,12 @@ export class List {
   static updateItem(text, id) {
     const newArr = List.dataArray();
     List.dataArray().forEach((task, index) => {
-      if (index === id - 1) {
+      if (index === id - 1 && text !== '') {
         newArr[index].text = text;
         localStorage.setItem('listArray', JSON.stringify(newArr));
       }
     });
-    Update.reload();
+    return newArr;
   }
 
   static removeCompleted() {
@@ -51,7 +51,8 @@ export class List {
       }
     });
     localStorage.setItem('listArray', JSON.stringify(newEvents));
-    Update.reload();
+    Update.indexUpdate();
+    return List.dataArray();
   }
 
   static makeEditable(id) {
@@ -75,6 +76,7 @@ export class List {
     editbtn.addEventListener('click', (event) => {
       const item = document.getElementById('edit-element');
       List.updateItem(item.value, id);
+      Update.reload();
     });
   }
 
@@ -84,13 +86,14 @@ export class List {
     return textItem;
   }
 
-  static completeItem(event) {
+  static completeItem(eventId) {
     const listArray = List.dataArray();
-    if (listArray[event.target.value - 1].completed === false) {
-      listArray[event.target.value - 1].completed = true;
+    if (listArray[eventId - 1].completed === false) {
+      listArray[eventId - 1].completed = true;
     } else {
-      listArray[event.target.value - 1].completed = false;
+      listArray[eventId - 1].completed = false;
     }
     localStorage.setItem('listArray', JSON.stringify(listArray));
+    return listArray;
   }
 }
